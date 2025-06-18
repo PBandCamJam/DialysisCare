@@ -24,8 +24,6 @@ This project explores whether a linear regression model can turn these routinely
 ---
 
 ## Dataset
-| Field | Description|
-|_______|____________|
-|**Source** | (https://data.cms.gov/provider-data/dataset/23ew-n7w9) |
-| Scope | Hundreds of U.S. dialysis facilities |
-| Key Variables Used | *Mortality Rate*, *Readmission Rate*, *Hospitalization Rate*, *Trasnfusion Rate* |
+**Source**: (https://data.cms.gov/provider-data/dataset/23ew-n7w9)
+Scope: Hundreds of U.S. dialysis facilities
+Key Variables Used: *Mortality Rate*, *Readmission Rate*, *Hospitalization Rate*, *Trasnfusion Rate*
