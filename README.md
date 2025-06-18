@@ -12,10 +12,13 @@ It's a pretty simple concept, and it begs the question:
 
 More transfusions often signal sicker patients or urgent complications.
 By examining transfusion rates alongside readmission rates and hospitalization rates, I set out to see whether these metrics can predict mortality differences from one clinic to the next.
+
 ---
+
 ## Background and Motivation
 Dialysis is lifesaving, yet high-risk. Centers for Medicare & Medicaid Services (CMS) publicly tracks how each facility performs on metrics such as readmissions, hospitalizations, transfusions, and mortality.
 If certain operational patterns reliably foreshadow higher death rates, providers could intervene earlier and target support more precisely.
 
 This project explores whether a linear regression model can turn these routinely reported metrics into early warning signals.
+
 ---
