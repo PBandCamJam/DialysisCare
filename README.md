@@ -1,88 +1,56 @@
 # Death and Dialysis
 
-_A data science exploration of how transfusion rates relate to mortality in U.S. dialysis facilities._
+A linear regression project exploring the relationship between **transfusion rates** and **mortality rates** in dialysis facilities across the U.S.
+
+![image](https://github.com/user-attachments/assets/761508c9-e5a7-49b4-85b6-f536385d09ec)
+
+Each day, there are thousands of people that sit for hours on end. They get their blood cleaned by machines in an exhausting routine that keeps them alive.
+For dialysis providers, the most important metric is their patient's mortality rate. Keeping these rates low is the driving force of any facility.
+
+It's a pretty simple concept, and it begs the question:
+> **Does the frequency of blood transfusions at a faclility hint at how many of its patients ultimately survive?**
+
+More transfusions often signal sicker patients or urgent complications.
+By examining transfusion rates alongside readmission rates and hospitalization rates, I set out to see whether these metrics can predict mortality differences from one clinic to the next.
 
 ---
 
-## Introduction
+## Background and Motivation
+Dialysis is lifesaving, yet high-risk. Centers for Medicare & Medicaid Services (CMS) publicly tracks how each facility performs on metrics such as readmissions, hospitalizations, transfusions, and mortality.
+If certain operational patterns reliably foreshadow higher death rates, providers could intervene earlier and target support more precisely.
 
-Each day, thousands of people across the U.S. undergo dialysis—a life-sustaining but physically taxing treatment for kidney failure. These patients rely on dialysis centers to manage their care and keep them alive. But how do we know which facilities are doing well?
-
-One key metric is **mortality rate**—the percentage of patients who die while under a facility’s care. Another is **transfusion rate**, which may indicate how often patients experience complications or severe anemia. This project explores whether transfusion rates (and other clinical indicators) can help predict mortality rates at dialysis centers.
-
----
-
-## Why This Matters
-
-Understanding the relationship between transfusions and mortality could help:
-
-- Identify facilities that may need support or intervention
-- Reveal early warning signs of poor outcomes
-- Improve transparency and accountability in dialysis care
+This project explores whether a linear regression model can turn these routinely reported metrics into early warning signals.
 
 ---
 
-## The Data
-
-We used publicly available data from the [Centers for Medicare & Medicaid Services (CMS)](https://data.cms.gov/provider-data/dataset/23ew-n7w9), which includes:
-
-- **Mortality Rate**
-- **Transfusion Rate**
-- **Readmission Rate**
-- **Hospitalization Rate**
-
-Each row represents a dialysis facility in the U.S.
+## Dataset
+**Source**: (https://data.cms.gov/provider-data/dataset/23ew-n7w9)  
+Scope: Hundreds of U.S. dialysis facilities  
+Key Variables Used: *Mortality Rate*, *Readmission Rate*, *Hospitalization Rate*, *Trasnfusion Rate*
 
 ---
 
-## The Questions We Asked
-
-### 1. Does the transfusion rate at a facility relate to the mortality rate?
-
-We started with a simple question: if a facility performs more transfusions, does that mean more of its patients are dying?
-
-### 2. Can we predict mortality rate using other clinical indicators?
-
-We wanted to see if a combination of metrics—transfusions, readmissions, and hospitalizations—could help us predict mortality more accurately.
-
-### 3. Is transfusion rate alone enough to predict mortality?
-
-We compared a full model (with all metrics) to a simple model using only transfusion rate.
+## Modeling Approach
+- **Language/Tools**: Python 3, Jupyter, 'pandas', 'numpy', 'scikit-learn', 'matplotlib'
+- **Train/Test Split**: 80/20 using random_state=12
+- **Model**: Linear Regression
 
 ---
 
-## The Process (Non-Technical Summary)
+## Results
+Relative Errors: 2.36448865%, 46.51394902%, 89.42139739%,  7.16557005% 28.83239043%,  3.52098489% 33.59703882%,  3.30336793%, 6.46676561%,  5.13622335%
 
-1. **Data Cleaning**: We removed facilities with missing values in key metrics. This ensured our analysis was based on complete and reliable data.
-
-2. **Exploration**: We visualized the distribution of each metric and looked for patterns. Histograms showed that most facilities had low mortality and transfusion rates, but a few had much higher values.
-
-3. **Modeling**: We used a technique called **linear regression** to model the relationship between transfusion rate and mortality. We trained two models:
-   - A **full model** using all three predictors
-   - A **simple model** using only transfusion rate
-
-4. **Evaluation**: We tested how well each model predicted mortality on unseen data and calculated the error rates.
+### Quick Takeaways
+- Most facilitiess were predicted within 10%, which is encouraging for a simple model.
+- A handful were **extremely off** (between a ~30-90% error), showing that there are unmeasured factors.
+- Hospitalization and readmission rates combined with transfusion rates give round out the affect on mortality rate.
 
 ---
 
-## What We Found
-
-- The full model predicted mortality with reasonable accuracy for most facilities.
-- The simple model (transfusion only) was less accurate and missed important patterns.
-- Some facilities had very high prediction errors, suggesting that other unmeasured factors (like patient demographics or staffing) may play a role.
-
----
-
-## Key Takeaways
-
-1. **Transfusions matter, but context is key**  
-   Transfusion rate is a useful signal, but it works best when combined with other metrics.
-
-2. **Outliers reveal complexity**  
-   Some facilities had unusual patterns that couldn’t be explained by the available data.
-
-3. **Correlation is not causation**  
-   Just because transfusions and mortality are related doesn’t mean one causes the other.
+## Key Insights
+1. **Transfusions matter, but the context is key**: They're a meaningful insight into patient mortality, but adding hospitalization and readmssion rates improves reliability.
+2. **Outliers reveal hidden complexity**: Facilities aren't black and white. There are a lot of contributing factors that could cause a simple model to not accurately reflect a facilities mortality rates.
+3. **Correlation is not Causation**: Higher transfusion rates correlate with higher mortality, but transfusions themselves aren't the cause.
 
 ---
 
